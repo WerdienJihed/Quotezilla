@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import Navigation from "./components/Navigation";
-import Header from "./components/Header";
+import Home from "./components/Home";
+import About from "./components/About";
 import Spinner from "react-bootstrap/Spinner";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,8 +23,17 @@ function App() {
         </div>
       ) : (
         <div className="App">
-          <Navigation />
-          <Header />
+          <Router>
+            <Navigation />
+            <Switch>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </Router>
         </div>
       )}
     </div>

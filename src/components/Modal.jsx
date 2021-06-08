@@ -7,7 +7,7 @@ function CustomModal(props) {
         <Modal.Title>See you tomorrow :D </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        sorry about that ! this API gives only one new fresh quote every day.
+        sorry about that ! this API gives only one new quote every day.
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={props.handleClose}>

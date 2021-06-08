@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Apilistgroup from "./Apilistgroup";
+import ApiList from "./ApiList";
 import Quotecard from "./Quotecard";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CustomModal from "./Modal";
-import "./../styles/header.css";
+import "./../styles/home.css";
 
-function Header() {
+function Home() {
   const [data, setData] = useState({ quote: "", source: "" });
   const [loading, setLoading] = useState(false);
   const [activeApi, setActiveApi] = useState("0");
@@ -114,11 +114,11 @@ function Header() {
     setActiveApi(activeKey);
   };
   return (
-    <div className="header">
+    <div className="home">
       <Container>
         <Row xs={12} md={4}>
           <Col>
-            <Apilistgroup handleSelect={handleSelect} />
+            <ApiList handleSelect={handleSelect} />
           </Col>
           <Col xs={12} md={8}>
             <Quotecard
@@ -135,4 +135,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Home;
