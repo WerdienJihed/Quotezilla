@@ -1,26 +1,26 @@
 import { useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
-import "./../styles/api-list.css";
 
 function Apilistgroup(props) {
-  const [activeKey, setActiveKey] = useState("0");
+  const [activeKey, setActiveKey] = useState("famousQuotesApi");
+  const handleSelect = props.handleSelect;
   return (
     <ListGroup
-      className="api-list"
       activeKey={activeKey}
       onSelect={(selectedKey) => {
-        props.handleSelect(selectedKey);
+        handleSelect(selectedKey);
         setActiveKey(selectedKey);
       }}
+      style={{ marginBottom: "1rem" }}
     >
-      <ListGroup.Item action eventKey="0">
-        movies and tv shows quotes
+      <ListGroup.Item action eventKey="famousQuotesApi">
+        Famous
       </ListGroup.Item>
-      <ListGroup.Item action eventKey="1">
-        Famous quotes
+      <ListGroup.Item action eventKey="moviesQuotesApi">
+        movies/tv shows
       </ListGroup.Item>
-      <ListGroup.Item action eventKey="2">
-        Motivational and inspirational quotes
+      <ListGroup.Item action eventKey="motivationalQuotesApi">
+        Motivational and inspirational
       </ListGroup.Item>
     </ListGroup>
   );

@@ -1,6 +1,9 @@
 .navbar {
   padding: 0 4rem;
 }
+#Capa_1 {
+  padding-right: 1rem;
+}
 .navbar-collapse {
   flex-direction: row-reverse;
 }

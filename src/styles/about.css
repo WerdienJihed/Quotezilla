@@ -1,3 +1,40 @@
-.about {
-  min-height: 100vh;
+.wrapper {
+  text-align: left;
+  margin: 4rem auto 0 auto;
+  padding: 0 0 4rem 0;
+  width: 70%;
+  word-wrap: break-word;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.created-by {
+  display: flex;
+  background: #81a0b8;
+  align-items: center;
+  border-radius: 15px;
+  justify-content: space-around;
+  padding: 1rem;
+  color: #001424;
+}
+.name {
+  font-weight: bold;
+}
+
+.social-icons > * {
+  margin: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .created-by {
+    flex-direction: column;
+  }
+  .social-icons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
 }

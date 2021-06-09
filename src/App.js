@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import "./App.css";
+import LoadingSpinner from "./components/LoadingSpinner";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import About from "./components/About";
-import Spinner from "react-bootstrap/Spinner";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,11 +16,7 @@ function App() {
   return (
     <div className="App">
       {isLoading ? (
-        <div className="spinner-container">
-          <Spinner animation="border" role="status">
-            <span className="sr-only">Loading...</span>
-          </Spinner>
-        </div>
+        <LoadingSpinner />
       ) : (
         <div className="App">
           <Router>

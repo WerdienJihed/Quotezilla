@@ -5,13 +5,13 @@ import Quotecard from "./Quotecard";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import CustomModal from "./Modal";
+import CustomModal from "./CustomModal";
 import "./../styles/home.css";
 
 function Home() {
   const [data, setData] = useState({ quote: "", source: "" });
   const [loading, setLoading] = useState(false);
-  const [activeApi, setActiveApi] = useState("0");
+  const [activeApi, setActiveApi] = useState("famousQuotesApi");
   const [counter, setCounter] = useState(0);
   const [show, setShow] = useState(false);
 
@@ -20,7 +20,7 @@ function Home() {
   useEffect(() => {
     setLoading(true);
 
-    const FetchDataMovieQuote = async () => {
+    const FetchDataMoviesQuotesApi = async () => {
       const options = {
         method: "GET",
         url: "https://movie-quote-api.herokuapp.com/v1/quote",
@@ -37,17 +37,17 @@ function Home() {
         })
         .catch((error) => {
           console.log(error);
+          setLoading(false);
         });
     };
 
-    const FetchDataQuotes15 = async () => {
+    const FetchDataFamousQuotesApi = async () => {
       const options = {
         method: "GET",
         url: "https://quotes15.p.rapidapi.com/quotes/random/",
         params: { language_code: "en" },
         headers: {
-          "x-rapidapi-key":
-            "9efb5a67f5msh114ed209b07ac1cp1777eejsn173f1c37d2fd",
+          "x-rapidapi-key": process.env.REACT_APP_X_RAPIDAPI_KEY,
           "x-rapidapi-host": "quotes15.p.rapidapi.com",
         },
       };
@@ -63,17 +63,17 @@ function Home() {
         })
         .catch(function (error) {
           console.error(error);
+          setLoading(false);
         });
     };
 
-    const FetchDataInspirational = async () => {
+    const FetchDataMotivationalQuotesApi = async () => {
       const options = {
         method: "GET",
         url: "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote",
         params: { token: "ipworld.info" },
         headers: {
-          "x-rapidapi-key":
-            "9efb5a67f5msh114ed209b07ac1cp1777eejsn173f1c37d2fd",
+          "x-rapidapi-key": process.env.REACT_APP_X_RAPIDAPI_KEY,
           "x-rapidapi-host":
             "quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com",
         },
@@ -90,24 +90,27 @@ function Home() {
         })
         .catch((error) => {
           console.error(error);
+          setLoading(false);
         });
     };
 
     switch (activeApi) {
-      case "1":
-        FetchDataQuotes15();
+      case "moviesQuotesApi":
+        FetchDataMoviesQuotesApi();
         break;
-      case "2":
-        FetchDataInspirational();
+      case "motivationalQuotesApi":
+        FetchDataMotivationalQuotesApi();
         break;
       default:
-        FetchDataMovieQuote();
+        FetchDataFamousQuotesApi();
         break;
     }
   }, [counter, activeApi]);
 
-  const handleClick = () => {
-    activeApi === "2" ? setShow(true) : setCounter((prev) => prev + 1);
+  const handleGenerate = () => {
+    activeApi === "motivationalQuotesApi"
+      ? setShow(true)
+      : setCounter((prev) => prev + 1);
   };
 
   const handleSelect = (activeKey) => {
@@ -115,7 +118,7 @@ function Home() {
   };
   return (
     <div className="home">
-      <Container>
+      <Container fluid>
         <Row xs={12} md={4}>
           <Col>
             <ApiList handleSelect={handleSelect} />
@@ -124,7 +127,7 @@ function Home() {
             <Quotecard
               quote={data.quote}
               source={data.source}
-              handleClick={handleClick}
+              handleGenerate={handleGenerate}
               isLoading={loading}
             />
           </Col>

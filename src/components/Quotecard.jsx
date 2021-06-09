@@ -12,7 +12,7 @@ function Quotecard(props) {
           <blockquote className="blockquote mb-0">
             <p>{props.quote}</p>
             <footer className="blockquote-footer text-warning">
-              <cite title="Source Title">{props.source}</cite>{" "}
+              <cite title="Source Title">{props.source}</cite>
             </footer>
           </blockquote>
         </Card.Body>
@@ -22,7 +22,7 @@ function Quotecard(props) {
           style={{ width: "100%" }}
           variant="primary"
           disabled={props.isLoading}
-          onClick={props.isLoading ? null : props.handleClick}
+          onClick={props.isLoading ? null : props.handleGenerate}
         >
           {props.isLoading ? "Loading…" : "Generate"}
         </Button>

@@ -1,13 +1,7 @@
 .App {
   text-align: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 1rem;
   background-color: #282c34;
   color: white;
-}
-
-.spinner-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
 }
